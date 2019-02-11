@@ -4,7 +4,9 @@ import numpy as np
 from tensorflow.keras.utils import Sequence, to_categorical
 from skimage.io import imread
 from skimage import img_as_float
-from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+from tensorflow.keras.layers import (
+    Input, Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+)
 from tensorflow.keras.models import Model
 from tensorflow.keras.callbacks import EarlyStopping
 
@@ -70,7 +72,7 @@ class DataProcessor(Sequence):
         # return batch_images, batch_labels
 
     def on_epoch_end(self):
-        if self.shuffle == True:
+        if self.shuffle is True:
             np.random.shuffle(self.paths)
 
 
