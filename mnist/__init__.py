@@ -2,12 +2,18 @@ import os
 from flask import Flask
 from flask_mongoengine import MongoEngine
 
+# from mnist.model import cov_net_02
 # export FLASK_APP = mnist FLASK_ENV = development; flask run
 
+# cnn = cov_net_02()
 db = MongoEngine()
 
 
 def create_app(test_config=None):
+    # global cnn
+    # cnn = cov_net_02()
+    # print(type(cnn))
+
     app = Flask(__name__, instance_relative_config=True)
 
     ''' load configs '''
@@ -39,3 +45,11 @@ def create_app(test_config=None):
         app.register_blueprint(mnist.bp)
 
     return app
+
+
+# if __name__ == "__main__":
+#     global cnn
+#     cnn = cov_net_02()
+
+#     app = create_app()
+#     app.run()

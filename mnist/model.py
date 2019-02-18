@@ -62,6 +62,15 @@ class CovNet02(object):
 
     def predict_one(self, x, weights='./weights/mnist.h5'):
         self.model.load_weights(weights)
-        y = self.model.predict(x, batch_size=1)
+        y = self.model.predict_on_batch(x)
 
-        return y
+        result = y[0].argmax()
+
+        return result
+
+
+def cov_net_02(weights='./weights/mnist.h5'):
+    m = CovNet02()
+    m.model.load_weights(weights)
+
+    return m.model
